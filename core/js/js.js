@@ -6,8 +6,6 @@ var oc_webroot;
 var oc_current_user = document.getElementsByTagName('head')[0].getAttribute('data-user');
 var oc_requesttoken = document.getElementsByTagName('head')[0].getAttribute('data-requesttoken');
 
-window.oc_config = window.oc_config || {};
-
 if (typeof oc_webroot === "undefined") {
 	oc_webroot = location.pathname;
 	var pos = oc_webroot.indexOf('/index.php/');
@@ -61,7 +59,6 @@ Object.assign(window.OC, {
 	 * @deprecated use {@link OC.getCurrentUser} instead
 	 */
 	currentUser:(typeof oc_current_user!=='undefined')?oc_current_user:false,
-	config: window.oc_config,
 	appConfig: window.oc_appconfig || {},
 	theme: window.oc_defaults || {},
 	coreApps:['', 'admin','log','core/search','settings','core','3rdparty'],
@@ -141,7 +138,7 @@ Object.assign(window.OC, {
 
 		}
 
-		if(oc_config.modRewriteWorking == true) {
+		if(OC.config.modRewriteWorking == true) {
 			return OC.getRootPath() + _build(url, params);
 		}
 
@@ -203,7 +200,7 @@ Object.assign(window.OC, {
 	 * @param {string} file to check
 	 */
 	fileIsBlacklisted: function(file) {
-		return !!(file.match(oc_config.blacklist_files_regex));
+		return !!(file.match(OC.config.blacklist_files_regex));
 	},
 
 	/**
@@ -935,8 +932,8 @@ function initCore() {
 	function initSessionHeartBeat() {
 		// interval in seconds
 		var interval = NaN;
-		if (oc_config.session_lifetime) {
-			interval = Math.floor(oc_config.session_lifetime / 2);
+		if (OC.config.session_lifetime) {
+			interval = Math.floor(OC.config.session_lifetime / 2);
 		}
 		interval = isNaN(interval)? 900: interval;
 
@@ -957,8 +954,8 @@ function initCore() {
 	}
 
 	// session heartbeat (defaults to enabled)
-	if (typeof(oc_config.session_keepalive) === 'undefined' ||
-		!!oc_config.session_keepalive) {
+	if (typeof(OC.config.session_keepalive) === 'undefined' ||
+		!!OC.config.session_keepalive) {
 
 		initSessionHeartBeat();
 	}
