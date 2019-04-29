@@ -103,6 +103,7 @@ window['md5'] = md5
 window['moment'] = moment
 
 window['OC'] = OC
+setDeprecatedProp('oc_debug', OC.debug, 'use OC.debug instead')
 setDeprecatedProp('OCDialogs', OC.dialogs, 'use OC.dialogs')
 window['OCP'] = OCP
 window['OCA'] = OCA

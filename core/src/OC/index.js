@@ -32,6 +32,7 @@ import PasswordConfirmation from './password-confirmation'
 import Plugins from './plugins'
 import search from './search'
 import Util from './util'
+import {debug} from './debug'
 import {redirect, reload} from './navigation'
 
 /** @namespace OC */
@@ -49,6 +50,7 @@ export default {
 	Plugins,
 	search,
 	Util,
+	debug,
 	redirect,
 	reload,
 }
