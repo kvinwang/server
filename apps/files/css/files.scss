@@ -75,6 +75,8 @@
 /* fit app list view heights */
 .app-files #app-content>.viewcontainer {
 	min-height: 0%;
+	/* required for IE to calculate the width of the table correctly */
+	width: 100%;
 }
 
 .app-files #app-content {
