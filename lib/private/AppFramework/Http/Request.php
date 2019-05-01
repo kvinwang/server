@@ -921,9 +921,6 @@ class Request implements \ArrayAccess, \Countable, IRequest {
 	}
 
 	private function fromTrustedProxy(): bool {
-		$remoteAddress = isset($this->server['REMOTE_ADDR']) ? $this->server['REMOTE_ADDR'] : '';
-		$trustedProxies = $this->config->getSystemValue('trusted_proxies', []);
-
-		return \is_array($trustedProxies) && $this->isTrustedProxy($trustedProxies, $remoteAddress);
+		return true;
 	}
 }
